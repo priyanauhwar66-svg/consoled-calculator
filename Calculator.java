@@ -4,43 +4,64 @@ public class Calculator {
     public static void main(String[] args) {
 
         try (Scanner sc = new Scanner(System.in)) {
-            char choice = 'y';
+
+            int choice;
 
             do {
-            System.out.println("Enter first number:");
-            double num1 = sc.nextDouble();
+                System.out.println("\n===== CALCULATOR MENU =====");
+                System.out.println("1. Addition");
+                System.out.println("2. Subtraction");
+                System.out.println("3. Multiplication");
+                System.out.println("4. Division");
+                System.out.println("5. Exit");
 
-            System.out.println("Enter second number:");
-            double num2 = sc.nextDouble();
+                System.out.print("Enter your choice: ");
+                choice = sc.nextInt();
 
-            System.out.println("Choose operation: +, -, *, /");
-            char op = sc.next().charAt(0);
-
-            double result = 0;
-
-            switch(op) {
-                case '+': result = num1 + num2; break;
-                case '-': result = num1 - num2; break;
-                case '*': result = num1 * num2; break;
-                case '/':
-                    if(num2 != 0)
-                        result = num1 / num2;
-                    else {
-                        System.out.println("Cannot divide by zero!");
-                        continue;
-                    }
+                if (choice == 5) {
+                    System.out.println("Exiting Calculator... Goodbye!");
                     break;
-                default:
-                    System.out.println("Invalid operator!");
-                    continue;
-            }
+                }
 
-            System.out.println("Result: " + result);
+                System.out.print("Enter first number: ");
+                double num1 = sc.nextDouble();
 
-            System.out.println("Do you want to continue? (y/n)");
-            choice = sc.next().charAt(0);
+                System.out.print("Enter second number: ");
+                double num2 = sc.nextDouble();
 
-            } while(choice == 'y' || choice == 'Y');
+                double result = 0;
+
+                switch (choice) {
+
+                    case 1:
+                        result = num1 + num2;
+                        System.out.println("Result: " + result);
+                        break;
+
+                    case 2:
+                        result = num1 - num2;
+                        System.out.println("Result: " + result);
+                        break;
+
+                    case 3:
+                        result = num1 * num2;
+                        System.out.println("Result: " + result);
+                        break;
+
+                    case 4:
+                        if (num2 != 0) {
+                            result = num1 / num2;
+                            System.out.println("Result: " + result);
+                        } else {
+                            System.out.println("Cannot divide by zero!");
+                        }
+                        break;
+
+                    default:
+                        System.out.println("Invalid choice! Please select 1-5.");
+                }
+
+            } while (true);
         }
     }
 }
